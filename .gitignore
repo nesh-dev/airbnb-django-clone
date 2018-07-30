@@ -1,0 +1,4 @@
+#ignore folder named 'thevenv/'
+thevenv/
+media_serve/
+static-servr/
