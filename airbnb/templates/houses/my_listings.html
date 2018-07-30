@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+            <!--  header end -->	
+            <!-- wrapper -->
+
+        
+                <div class="user-profile-menu-wrap fl-wrap">	
+            <div id="wrapper">
+                <!--content -->  
+                <div class="content">
+                    <!--section --> 
+                    <section id="sec1">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- profile-edit-wrap -->
+                   
+                                    {% include "dash.html" %}
+                                                
+                                                <!-- user-profile-menu end-->                               
+                                
+                                 
+                                    
+
+                                    <div class="col-md-9">
+                                        <div class="dashboard-list-box fl-wrap">
+                                            <div class="dashboard-header fl-wrap">
+                                                <h3>Indox</h3>
+                                            </div>
+                                             
+                                            {% for object in object_list%}
+                                            <div class="dashboard-list">
+                                                <div class="dashboard-message">
+                                                    <div class="dashboard-listing-table-image">
+                                                        <a href="listing-single.html"><img src="{{object.images.url}}" alt=""></a>
+                                                    </div>
+                                                    <div class="dashboard-listing-table-text">
+                                                        <h4><a href="{% url 'house:detail' object.slug %}">{{object.adtitle}}</a></h4>
+                                                        <span class="dashboard-listing-table-address"><i class="fa fa-map-marker"></i><a  href="#">{{object.location}}</a></span>
+                                                        <div class="listing-rating card-popup-rainingvis fl-wrap" data-starrating2="3">
+                                                            <span>(2 reviews)</span>
+                                                        </div>
+                                                        <ul class="dashboard-listing-table-opt  fl-wrap">
+                                                            <li><a href="{%url 'house:update_house' object.slug%} ">Edit <i class="fa fa-pencil-square-o"></i></a></li>
+                                                            <li><a href="{% url 'house:delete_house' object.slug %}" class="del-btn">Delete <i class="fa fa-trash-o"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- dashboard-list end-->                             {%endfor%}     
+                                            
+                                                </div>
+                                      
+                                            <!-- dashboard-list end-->   
+                                       
+                                        <!-- pagination-->
+                                        <div class="pagination">
+                                            <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+                                            <a href="#">1</a>
+                                            <a href="#" class="current-page">2</a>
+                                            <a href="#">3</a>
+                                            <a href="#">4</a>
+                                            <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--profile-edit-wrap end -->
+                        </div>
+                        <!--container end -->
+                    </section>
+                    <!-- section end -->
+                    <div class="limit-box fl-wrap"></div>
+              
+                    <!-- section end -->
+                </div>
+            </div>
+  {% endblock content%}

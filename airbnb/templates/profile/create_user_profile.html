@@ -1,0 +1,98 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+    
+        
+            <!-- wrapper -->	
+            <div id="wrapper">
+                <!--content -->  
+                <div class="content">
+                    <!--section --> 
+                    <section>
+                        <!-- container -->
+                        <div class="container">
+                            <!-- profile-edit-wrap -->
+                          {% include "dash.html" %}
+                        {% if request.user.is_authenticated and user.profile == request.user.profile %}
+                       
+                                    <div class="col-md-7">
+                                        {{form.non_field_errors}}
+                                        <form class="" method="post" action=""  enctype="multipart/form-data">{% csrf_token %}
+                                        <!-- profile-edit-container--> 
+                                        <div class="profile-edit-container">
+                                            <div class="profile-edit-header fl-wrap">
+                                                <h4>My Profile</h4>
+                                            </div>
+                                            <form>
+                                            <div class="custom-form">
+                                                <label for="{{form.phone.id_for_label}}">Phone</label>
+                                                {{form.phone}}
+                                                
+                                                <label for="{{form.adress.id_for_label}}">Adress</label>
+                                                {{form.adress}}
+
+                                                <label for="{{form.bio.id_for_label}}">Bio</label>
+                                                {{form.bio}}
+                                                
+                                            </div>
+                                        </div>
+                                        <!-- profile-edit-container end--> 
+                                        <!-- profile-edit-container--> 
+                                        <div class="profile-edit-container">
+                                            <div class="profile-edit-header fl-wrap" style="margin-top:30px">
+                                                <h4>My Socials</h4>
+                                            </div>
+                                            <div class="custom-form">
+                                                <label for="{{form.facebook.id_for_label}}">Facebook</label>
+                                                {{form.facebook}}
+                                                <label for="{{form.twitter.id_for_label}}">Twitter</label>
+                                    {{form.twitter}}
+                                              
+                                                <button class="btn  big-btn  color-bg flat-btn">Save Changes<i class="fa fa-angle-right"></i></button>
+                                            </div>
+                                        </div>
+                                        <!-- profile-edit-container end-->      
+                                    </form>       
+                                                            
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="edit-profile-photo fl-wrap">
+                                                {% if request.user.profile.avatar %}
+                                                <img src="{{request.user.profile.avatar.url}}" class="respimg" alt="">
+                                                {% endif %}
+                                                
+                                            <div class="change-photo-btn">
+                                                <div class="photoUpload">
+                                                    <span><i class="fa fa-upload"></i><label for="{{form.avatar.id_for_label}}">Upload Photo</label></span>
+                                                    
+                                                    {{form.avatar}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                  
+                            </div>
+                            <!--profile-edit-wrap end -->
+                          </form>
+                          {%else%}
+                          <form>
+                              <p>You are not allowed to edit this form</p>
+                          </form>
+                          
+                          {%endif%}
+                        </div>
+                        <!--container end -->
+                    </section>
+                    <!-- section end -->
+                    <div class="limit-box fl-wrap"></div>
+                   
+                     
+                </div>
+            </footer>
+            <!--footer end  -->
+            <a class="to-top"><i class="fa fa-angle-up"></i></a>
+        </div>
+     
+</html>
+
+{% endblock content %}

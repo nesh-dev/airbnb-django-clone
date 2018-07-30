@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+    
+<head>
+        <!--=============== basic  ===============-->
+        <meta charset="UTF-8">
+        <title>Citybook -Directory Listing Template</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="robots" content="index, follow"/>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <!--=============== css  ===============-->
+        <link type="text/css" rel="stylesheet" href="{%  static 'static/css/reset.css' %}">
+        <link type="text/css" rel="stylesheet" href="{% static 'static/css/plugins.css' %}">
+        <link type="text/css" rel="stylesheet" href="{% static 'static/css/style.css'%}">
+        <link type="text/css" rel="stylesheet" href="{%static 'static/css/color.css' %}">
+        <!--=============== favicons ===============-->
+        <link rel="shortcut icon" href="{% static 'static/images/favicon.ico'%}">
+    </head>
+    
+    <body>
+    {% include "header.html"%}
+
+    {% block content%}
+
+    {% endblock content%}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'static/js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'static/js/plugins.js' %}"></script>
+        <script type="text/javascript" src="{% static 'static/js/scripts.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&amp;libraries=places&amp;callback=initAutocomplete"></script>
+  </body>

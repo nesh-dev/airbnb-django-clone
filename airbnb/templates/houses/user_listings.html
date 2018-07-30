@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block content %}
+             <!--  header end -->
+            <!-- wrapper -->
+            <div id="wrapper">
+                <!--Content -->
+                <div class="content">
+                    <!--section -->
+                    <section class="parallax-section small-par color-bg">
+                        <div class="shapes-bg-big"></div>
+                        <div class="container">
+                            <div class="section-title center-align">
+                                <div class="breadcrumbs fl-wrap"><a href="#">Home</a><a href="#">Listing</a><span>User profile</span></div>
+                                <h2><span>User : {{request.user.username}}</span></h2>
+                                <div class="user-profile-avatar"><img src="{{request.user.profile.avatar.url}}" alt=""></div>
+                                <div class="user-profile-rating clearfix">
+                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5">
+                                        <span>(37 reviews)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-sec-link">
+                            <div class="container"><a href="#sec1" class="custom-scroll-link">About user</a></div>
+                            
+                        </div>
+                    </section>
+                    <!-- section end -->
+                    <!--section -->
+                    <section class="gray-bg" id="sec1">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="list-single-main-item fl-wrap">
+                                        <div class="list-single-main-item-title fl-wrap">
+                                            <h3>About <span>{{request.user.username}}</span></h3>
+                                        </div>
+                                        <p>{{request.user.profile.bio}}</p>
+                                        <a href="#" class="btn transparent-btn float-btn">Visit Website <i class="fa fa-angle-right"></i></a>
+                                    </div>
+                                    <div class="listsearch-header fl-wrap">
+                                        <h3>{{request.user.username}} Listings</h3>
+                                        <div class="listing-view-layout">
+                                            <ul>
+                                                <li><a class="grid active" href="#"><i class="fa fa-th-large"></i></a></li>
+                                                <li><a class="list" href="#"><i class="fa fa-list-ul"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- list-main-wrap-->
+                                    <div class="list-main-wrap fl-wrap card-listing ">
+                                            {% for object in object_list %}
+                                        <!-- listing-item -->
+                                        <div class="listing-item">
+                                            <article class="geodir-category-listing fl-wrap">
+                                                <div class="geodir-category-img">
+                                                    <img src="{{object.images.url}}" alt="">
+                                                    <div class="overlay"></div>
+                                                    <div class="list-post-counter"><span>4</span><i class="fa fa-heart"></i></div>
+                                                </div>
+                                                <div class="geodir-category-content fl-wrap">
+                                                    <a class="listing-geodir-category" href="listing.html">{{object.house_type}}</a>
+                                                    <div class="listing-avatar"><a href="author-single.html"><img src="{{object.owner.profile.avatar}}" alt=""></a>
+                                                        <span class="avatar-tooltip">Added By  <strong>{{object.owner.username}}</strong></span>
+                                                    </div>
+                                                    <h3><a href="{% url 'house:detail' object.slug %}">{{object.adtitle}}</a></h3>
+                                                    <p>{{object.description|truncatechars:100}}.</p>
+                                                    <div class="geodir-category-options fl-wrap">
+                                                        <div class="listing-rating card-popup-rainingvis" data-starrating2="5">
+                                                            <span>(7 reviews)</span>
+                                                        </div>
+                                                        <div class="geodir-category-location"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> </a>{{object.location}}</div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                        <!-- listing-item end-->
+                                        {%endfor%}
+                                       
+                                        
+                                   
+                                        <div class="clearfix"></div>
+                                       
+                                    
+                                      
+                                        <!-- pagination-->
+                                        <div class="pagination">
+                                            <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+                                            <a href="#" class="current-page">1</a>
+                                            <a href="#">2</a>
+                                            <a href="#">3</a>
+                                            <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- list-main-wrap end-->
+                                </div>
+                                <!--box-widget-wrap -->
+                                <div class="col-md-4">
+                                    <div class="fl-wrap">
+                                        <!--box-widget-item -->
+                                        <div class="box-widget-item fl-wrap">
+                                            <div class="box-widget-item-header">
+                                                <h3>User Contacts : </h3>
+                                            </div>
+                                            <div class="box-widget">
+                                                <div class="box-widget-content">
+                                                    <div class="list-author-widget-contacts list-item-widget-contacts">
+                                                        <ul>
+                                                            <li><span><i class="fa fa-map-marker"></i> Adress :</span> <a href="#">{{request.user.profile.adress}}</a></li>
+                                                            <li><span><i class="fa fa-phone"></i> Phone :</span> <a href="#">{{request.user.profile.phone}}</a></li>
+                                                            <li><span><i class="fa fa-envelope-o"></i> Mail :</span> <a href="#">{{request.user.email}}</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="list-widget-social">
+                                                        <ul>
+                                                            <li><a href="{{request.user.profile.facbook}}" target="_blank" ><i class="fa fa-facebook"></i></a></li>
+                                                            <li><a href="{{request.user.profile.twitter}}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                                            <li><a href="{{request.user.profile.phone}}" target="_blank" ><i class="fa fa-whatsapp"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--box-widget-item end -->
+                                        <!--box-widget-item -->
+                                        <div class="box-widget-item fl-wrap">
+                                            <div class="box-widget-item-header">
+                                                <h3>Get in Touch : </h3>
+                                            </div>
+                                            <div class="box-widget">
+                                                <div class="box-widget-content">
+                                                    <form id="add-comment" class="add-comment custom-form">
+                                                        <fieldset>
+                                                            <label><i class="fa fa-user-o"></i></label>
+                                                            <input type="text" placeholder="Your Name *" value=""/>
+                                                            <div class="clearfix"></div>
+                                                            <label><i class="fa fa-envelope-o"></i>  </label>
+                                                            <input type="text" placeholder="Email Address*" value=""/>
+                                                            <textarea cols="40" rows="3" placeholder="Your message:"></textarea>
+                                                        </fieldset>
+                                                        <button class="btn  big-btn  color-bg flat-btn">Send Message<i class="fa fa-angle-right"></i></button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--box-widget-item end -->
+                                    </div>
+                                </div>
+                                <!--box-widget-wrap end-->
+                            </div>
+                        </div>
+                    </section>
+               
+                {% endblock content%}
+    

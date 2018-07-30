@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block content %}
+            <!--  header end -->	
+            <!-- wrapper -->	
+            <div id="wrapper">
+                <!--content -->  
+                <div class="content">
+                    <!--section --> 
+                    <section id="sec1">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- profile-edit-wrap -->
+                            <div class="profile-edit-wrap">
+                                    <div class="user-profile-menu-wrap fl-wrap">	
+                                            <div id="wrapper">
+                                                <!--content -->  
+                                                <div class="content">
+                                                    <!--section --> 
+                                                    <section id="sec1">
+                                                        <!-- container -->
+                                                        <div class="container">
+                                                            <!-- profile-edit-wrap -->
+                                                   
+                                                                    {% include "dash.html" %}
+                                    <div class="col-md-9">
+                                            <div class="profile-edit-container add-list-container">
+                                                    <div class="profile-edit-header fl-wrap">
+                                                        <h4>House Details</h4>
+                                                    </div>
+                                                    <div class="custom-form">
+                                            {{form.non_field_errors}}
+                        <form class="" method="post" action=""  enctype="multipart/form-data">{% csrf_token %}
+                                                                    
+                                    <div class="">                    
+                                    <label for="{{form.adtitle.id_for_label}}">House Title</label>
+                                    {{form.adtitle}}
+                                </div>  
+
+                                <div class="">                    
+                                    <label for="{{form.description.id_for_label}}">Desciption</label>
+                                    {{form.description}}
+                                </div>  
+
+                                <div class="">                    
+                                    <label for="{{form.location.id_for_label}}">Location</label>
+                                    {{form.location}}
+                                </div>  
+
+                                <div class="nice-select-search-box">                    
+                                    <label for="{{form.house_type.id_for_label}}">House Type</label>
+                                    {{form.house_type}}
+                                </div>  
+
+                                <div class="">                    
+                                    <label for="{{form.no_beds.id_for_label}}">Number of Beds</label>
+                                    {{form.no_beds}}
+                                </div> 
+                                <div class="">                    
+                                    <label for="{{form.no_beds.id_for_label}}">Number of Bedrooms</label>
+                                    {{form.no_bedrooms}}
+                                </div> 
+                                 <div class="">                    
+                                    <label for="{{form.no_price.id_for_label}}">Price</label>
+                                    {{form.price}}
+                                </div>
+                                <div class="">                    
+                                    <label for="{{form.images.id_for_label}}">Images</label>
+                                    {{form.images}}
+                                </div>
+                                <div class="">                    
+                                    <label for="{{form.no_baths.id_for_label}}">Number of Baths</label>
+                                    {{form.no_baths}}
+                                </div>
+                               
+                                    <div class="profile-edit-header fl-wrap">
+                                        <h4>House Amenities</h4>
+                                    </div>
+                                
+                                            <div class=" fl-wrap filter-tags">
+                                                 <label for="{{form.essenstial.id_for_label}}">Essential</label>
+                                                    {{form.essential}}
+                                                
+                                                    <label for="{{form.shampoo.id_for_label}}">Shampoo</label>
+                                                    {{form.shampoo}}
+                                                    <label for="{{form.closet.id_for_label}}">Closet</label>
+                                                    {{form.closet}}
+                                                    <label for="{{form.tv.id_for_label}}">Tv</label>
+                                                    {{form.tv}}
+                                                    <label for="{{form.smoke_detector.id_for_label}}">Smoke Detector</label>
+                                                    {{form.smoke_detector}}
+                                                
+                                                <label for="{{form.first_aid.id_for_label}}">First Aid Kit</label>
+                                                {{form.first_aid}}
+
+                                                <label for="{{form.fire_extinguisher.id_for_label}}">Fire Extinguisher</label>
+                                                {{form.fire_extinguisher}}
+
+                                                <div class="profile-edit-header fl-wrap">
+                                                        <h4> Shared Spaces</h4>
+                                                    </div>
+                                                    <label for="{{form.laundry.id_for_label}}">Laundry</label>
+                                                    {{form.laundry}}
+                                                    <label for="{{form.gym.id_for_label}}">Gym</label>
+                                                    {{form.gym}}
+                                                    <label for="{{form.pool.id_for_label}}">Pool</label>
+                                                    {{form.pool}}
+                                                
+                                                <label for="{{form.parking.id_for_label}}">parking</label>
+                                                {{form.parking}}
+                                                
+                                            </div>
+                                    </div>
+                                    
+                                                            
+
+                                        
+                                                              
+        <input type="submit" class="btn btn-primay" value="Submit">            
+                                              </form>
+                                            
+                                            
+                                        
+                                      
+                                        
+                                            {%endblock content%}

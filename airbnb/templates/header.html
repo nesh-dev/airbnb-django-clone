@@ -1,0 +1,90 @@
+<!--loader-->
+<div class="loader-wrap">
+  <div class="pin"></div>
+  <div class="pulse"></div>
+</div>
+<!--loader end-->
+<!-- Main  -->
+<div id="main">
+  <!-- header-->
+  <header class="main-header dark-header fs-header sticky">
+      <div class="header-inner">
+          <div class="logo-holder">
+              <a href="index.html"><img src="images/logo.png" alt=""></a>
+          </div>
+          <div class="header-search vis-header-search">
+              <div class="header-search-input-item">
+                  <input type="text" placeholder="Keywords" value=""/>
+              </div>
+              <div class="header-search-select-item">
+                  <select data-placeholder="All Categories" class="chosen-select" >
+                      <option>All Categories</option>
+                      <option>Shops</option>
+                      <option>Hotels</option>
+                      <option>Restaurants</option>
+                      <option>Fitness</option>
+                      <option>Events</option>
+                  </select>
+              </div>
+              <button class="header-search-button" onclick="window.location.href='listing.html'">Search</button>
+          </div>
+          <div class="show-search-button"><i class="fa fa-search"></i> <span>Search</span></div>
+          <a href="{%url 'house:create'%}" class="add-list">Add Listing <span><i class="fa fa-plus"></i></span></a>
+          {%if not request.user.is_authenticated %}
+          <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Sign In</div>
+          {% else %}
+          <div class="header-user-menu">
+                <div class="header-user-name">
+                    <span><img src="{{ request.user.profile.avatar.url }}" alt=""></span>
+                    Hello, {{request.user.username }}
+                </div>
+                <ul>
+                    <li><a href="{%url 'accounts:update' request.user.username%}"> Edit profile</a></li>
+                    <li><a href="{%url 'house:create'%}"> Add Listing</a></li>
+                    <li><a href="dashboard-bookings.html">  Bookings  </a></li>
+                    <li><a href="dashboard-review.html"> Reviews </a></li>
+                    <li><a href="/logout">Log Out</a></li>
+                </ul>
+            </div>
+          {% endif %}
+          <!-- nav-button-wrap-->
+          <div class="nav-button-wrap color-bg">
+              <div class="nav-button">
+                  <span></span><span></span><span></span>
+              </div>
+          </div>
+          <!-- nav-button-wrap end-->
+          <!--  navigation -->
+          <div class="nav-holder main-menu">
+              <nav>
+                  <ul>
+                      
+                      <li>
+                          <a href="/">Home <i class="fa fa-caret-down"></i></a>
+                          <!--second level -->
+                       
+                      </li>
+                      <li>
+                            <a href="/" class="act-link">Listings <i class="fa fa-caret-down"></i></a>
+                            <!--second level -->
+                           
+                            <!--second level end-->
+                    </li>
+                      
+                      <!-- <li>
+                          <a href="blog.html">News</a>
+                      </li>
+                      <li>
+                          <a href="#">Pages <i class="fa fa-caret-down"></i></a>
+                          <!--second level -->
+                          
+                          <!--second level end-->
+                      </li> 
+                  </ul>
+              </nav>
+          </div>
+          <!-- navigation  end -->
+      </div>
+  </header>
+
+ 
