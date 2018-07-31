@@ -1,10 +1,4 @@
 #ignore folder named 'thevenv/'
 thevenv/
-#ignore media_serve
 media_serve/
-
-#ignore static_servr
 static-serve/
-#remove .vscode/
-.vscode
-

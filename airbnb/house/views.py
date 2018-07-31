@@ -1,8 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.views.generic import CreateView, UpdateView, DeleteView,ListView,FormView, DetailView
-from django.views.generic.edit import FormMixin
+from django.views.generic.edit import FormMixin, SingleObjectMixin
 from django.urls import reverse, reverse_lazy
 from . mixins import FormUserNeededMixin, AjaxFormMixin
 from . models import House, Booking, Review
@@ -87,7 +87,7 @@ class MyHouseList(ListView):
 
 
 
-class HouseDetail(AjaxFormMixin,DetailView):
+class HouseDetail(DetailView):
     model = House
     template_name = 'houses/house_detail.html'
     form_class = BookingForm
@@ -96,6 +96,22 @@ class HouseDetail(AjaxFormMixin,DetailView):
         context = super(HouseDetail, self).get_context_data(**kwargs)
         context['form'] = BookingForm()
         return context
+    
+class BookHouse(SingleObjectMixin, FormView):
+    template_name = 'houses/house_detail.html'
+    form_class = BookingForm
+    model = House
+
+    def post(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden()
+        self.object = self.get_object()
+        return super().post(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('house-detail', kwargs={'pk': self.object.pk})
+        
+
 
 
 

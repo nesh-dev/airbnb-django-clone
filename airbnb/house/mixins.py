@@ -24,21 +24,29 @@ class UserOwnerMixin(FormUserNeededMixin, object):
             form._errors[forms.forms.NON_FIELD_ERRORS] = ErrorList(["this user is not allowed to change this data"])
         return self.form_invalid(form)
 
-class AjaxFormMixin(object):
+
+class AjaxFormMixin(object):        
+    def render_to_json_response(self, context, **response_kwargs):
+        """Render a json response of the context."""
+
+        data = json.dumps(context)
+        response_kwargs['content_type'] = 'application/json'
+        return HttpResponse(data, **response_kwargs)
+    
     def form_invalid(self, form):
-        response = super(AjaxFormMixin, self).form_invalid(form)
+        response = super(AjaxableRetosponseMixin, self).form_invalid(form)
         if self.request.is_ajax():
-            return JsonResponse(form.errors, status=400)
-        else:
-            return response
+            return self.render_to_json_response(form.errors, status=400)
+
+        return response
 
     def form_valid(self, form):
-        response = super(AjaxFormMixin, self).form_valid(form)
+        response = super(AjaxableResponseMixin, self).form_valid(form)
         if self.request.is_ajax():
-            print(form.cleaned_data)
+            # Request is ajax, send a json response
             data = {
-                'message': "Successfully submitted form data."
+                'pk': self.object.pk,
             }
-            return JsonResponse(data)
-        else:
-            return response
+            return self.render_to_json_response(data)
+
+        return response  # Request isn't ajax, send normal response
