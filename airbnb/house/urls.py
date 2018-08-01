@@ -5,7 +5,7 @@ admin.autodiscover()
 
 from . views import (
   HouseCreate, HouseList, HouseDetail, MyHouseList, 
-  HouseUpdateView, HouseDeleteView
+  HouseUpdateView, HouseDeleteView, BookingView, SearchView
 )
 
 app_name = 'house'
@@ -17,5 +17,6 @@ urlpatterns = [
     path('<slug:slug>/', HouseDetail.as_view(), name='detail'),
     path('edit/<slug:slug>', HouseUpdateView.as_view(), name='update_house'),
     path('delete/<slug:slug>', HouseDeleteView.as_view(), name='delete_house'),
+    path('book/', BookingView.as_view(), name='book'),
 
 ]

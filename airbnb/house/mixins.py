@@ -1,6 +1,8 @@
 from django import forms
 from django.forms.utils import ErrorList
 from django.http import JsonResponse
+from django.http import HttpResponse
+
 
 
 class FormUserNeededMixin(object):
@@ -34,14 +36,14 @@ class AjaxFormMixin(object):
         return HttpResponse(data, **response_kwargs)
     
     def form_invalid(self, form):
-        response = super(AjaxableRetosponseMixin, self).form_invalid(form)
+        response = super(AjaxFormMixin, self).form_invalid(form)
         if self.request.is_ajax():
             return self.render_to_json_response(form.errors, status=400)
 
         return response
 
     def form_valid(self, form):
-        response = super(AjaxableResponseMixin, self).form_valid(form)
+        response = super(AjaxFormMixin, self).form_valid(form)
         if self.request.is_ajax():
             # Request is ajax, send a json response
             data = {

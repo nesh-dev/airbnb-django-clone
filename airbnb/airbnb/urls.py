@@ -17,7 +17,7 @@ from django.contrib import admin
 
 from django.urls import path, include
 from .views import home
-from house.views import HouseList
+from house.views import HouseList, SearchView
 from accounts.views import RegisterForm
 
 from django.conf import settings
@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
     path('house/', include('house.urls' ,namespace='house')),
+    path('search', SearchView.as_view(), name='search'),
     path('' , HouseList.as_view(), name='list'),
     path('profile/', include('accounts.urls',namespace='accounts')),
     path('register/', RegisterForm.as_view(), name='profile'),

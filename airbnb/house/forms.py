@@ -122,7 +122,9 @@ class HouseForm(forms.ModelForm):
   
 class BookingForm(forms.ModelForm):
   no_guests = forms.IntegerField(label='Guests', required=True)
-  start = forms.DateField(label="Start", required=True)
+  start = forms.DateField(label="Start", 
+  required=True, 
+  widget=forms.SelectDateWidget(attrs={'type':'text', 'class':'datepick', 'data-large-mode':'true', 'data-large-default':"true"}))
   end = forms.DateField(label="End", required=True)
   extra_info = forms.CharField(label="Additional info", required=False)
 
@@ -133,7 +135,13 @@ class BookingForm(forms.ModelForm):
 
 
 
-
+class SearchForm(forms.Form):
+  keyword = forms.CharField(required=False)
+  house_type = forms.ChoiceField(choices=TYPES,
+    label='House Type', 
+    required = 'True',
+    widget=forms.Select(attrs={'class':' chosen-select  nice-select-search'})
+  )
 
 
 

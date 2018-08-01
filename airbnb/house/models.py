@@ -85,6 +85,8 @@ class Booking(models.Model):
         timestamp = models.DateTimeField(auto_now_add=True)
         mod_date = models.DateTimeField(auto_now_add=True)
 
+        objects = models.Manager()
+
         def __str__(self):
                 return str(self.house)
 

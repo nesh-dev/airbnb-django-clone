@@ -8,3 +8,4 @@ static-serve/
 #remove .vscode/
 .vscode
 
+db.sqlite

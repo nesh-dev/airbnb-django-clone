@@ -320,30 +320,32 @@
                                             </div>
                                             <div class="box-widget opening-hours">
                                                 <div class="box-widget-content">
-                                                        <form class='add-comment custom-form my-ajax-form' method='POST' action='.' data-url='{{ request.build_absolute_uri|safe }}'>
+                                                        <form class='add-comment custom-form' method='POST' action="{% url 'house:book' %}" >
                                                             {% csrf_token %}
                                                         <fieldset>
                                                            
-                                                            <div class="quantity fl-wrap">
-                                                                <span><i class="fa fa-user-plus"></i>Persons : </span>
-                                                                <div class="quantity-item">
-                                                                    <input type="button" value="-" class="minus">
-                                                                    <input id="no_guests" type="text"    name="no_guests"   title="Qty" class="qty" min="1" max="3" step="1" value="1">
-                                                                    <input type="button" value="+" class="plus">
+                                                            <fieldset>
+                                                                
+                                                                <div class="quantity fl-wrap">
+                                                                    <span><i class="fa fa-user-plus"></i>Persons : </span>
+                                                                    <div class="quantity-item">
+                                                                        <input type="button" value="-" class="minus">
+                                                                        <input type="text"   id="no_guests" name="no_guests"   title="Qty" class="qty" min="1" max="3" step="1" value="1">
+                                                                        <input type="button" value="+" class="plus">
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-6">                               
-                                                                    <label><i class="fa fa-calendar-check-o"></i>  </label>
-                                                                    <input id="start" name="start" type="text" placeholder="Date" class="datepicker"   data-large-mode="true" data-large-default="true"   value=""/>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">                               
+                                                                        <label><i class="fa fa-calendar-check-o"></i>  </label>
+                                                                        <input type="text" name="start" id="start" placeholder="Date" class="datepicker"   data-large-mode="true" data-large-default="true"   value=""/>
+                                                                    </div>
+                                                                    <div class="col-md-6"> 
+                                                                        <label><i class="fa fa-clock-o"></i>  </label>
+                                                                        <input type="text" name="stop" id="stop" placeholder="Date" class="datepicker"   data-large-mode="true" data-large-default="true"   value=""/>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-md-6"> 
-                                                                    <label><i class="fa fa-clock-o"></i>  </label>
-                                                                    <input id="stop" name="stop" type="text" placeholder="Date" class="datepicker"   data-large-mode="true" data-large-default="true"   value=""/>
-                                                                </div>
-                                                            </div>
-                                                            <textarea id="extra_info" name="extra_info" cols="40" rows="3" placeholder="Additional Information:"></textarea>
-                                                        </fieldset>
+                                                                <textarea id="extra_info" name="extra_info"  cols="40" rows="3" placeholder="Additional Information:"></textarea>
+                                                            </fieldset>
                                                         <button class="btn  big-btn  color-bg flat-btn">Book Now<i class="fa fa-angle-right"></i></button>
                                                     </form>
                                                 </div>
